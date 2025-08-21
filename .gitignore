@@ -1,17 +1,28 @@
-# IDEA files
-/.idea/
-/out/
-/*.iml
-
-# Gradle build files
-/.gradle/
-/build/
-src/main/resources/docs/
-
-# MacOS custom attributes files created by Finder
-.DS_Store
+# =========================
+# IntelliJ / JetBrains IDE
+# =========================
+.idea/
 *.iml
+
+# =========================
+# Build / Output
+# =========================
+out/
+build/
 bin/
 
+# =========================
+# Gradle
+# =========================
+.gradle/
+
+# =========================
+# MacOS Finder files
+# =========================
+.DS_Store
+
+# =========================
+# Course-specific
+# =========================
 /text-ui-test/ACTUAL.TXT
-text-ui-test/EXPECTED-UNIX.TXT
+/text-ui-test/EXPECTED-UNIX.TXT
