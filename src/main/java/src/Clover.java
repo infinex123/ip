@@ -1,8 +1,13 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Clover {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        String[] items = new String[100];
+        int size = 0;
+
 
         String line = "______________________________________________________";
         System.out.println(line);
@@ -13,13 +18,22 @@ public class Clover {
         //System.out.println(line);
 
         while (in.hasNextLine()) {
-            String userLine =  in.nextLine();
-            if (userLine.equals("bye")) {
+            String input =  in.nextLine().trim();
+            if (input.equalsIgnoreCase("bye")) {
                 System.out.println("Bye, hope to see you again soon!!");
                 break;
+            } else if (input.equalsIgnoreCase("list")) {
+                for (int i = 0; i < size;i++) {
+                    System.out.println(" " + (i + 1) + "." + items[i]);
+                }
+            } else if (!input.isEmpty()) {
+                if (size < items.length) {
+                    items[size++] = input;
+                    System.out.println("added: " + input);
+                } else {
+                    System.out.println("full!!");
+                }
             }
-
-            System.out.println(userLine);
         }
     }
 }
