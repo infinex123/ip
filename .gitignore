@@ -26,3 +26,7 @@ bin/
 # =========================
 /text-ui-test/ACTUAL.TXT
 /text-ui-test/EXPECTED-UNIX.TXT
+**/out/
+**/*.class
+**/.idea/
+*.iml
