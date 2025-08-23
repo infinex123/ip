@@ -18,6 +18,86 @@ public class Clover {
         }
     }
 
+    private static void printError(String msg) {
+        System.out.println(msg);
+    }
+
+    private static void handle(String input) throws DukeException {;
+        if (input.isEmpty()) {
+            return;
+        } else if (input.equalsIgnoreCase("list")) {
+            printList();
+        } else if (input.toLowerCase().startsWith("mark ")) {
+            markOrUnmark(tasks, input, true);
+        } else if (input.toLowerCase().startsWith("unmark")) {
+            markOrUnmark(tasks, input, false);
+        } else if (input.startsWith("todo")) {
+            String description = input.length() > 4 ? input.substring(5).trim(): "";
+            if (description.isEmpty()) {
+                throw new DukeException("todo needs a description!!");
+            }
+            Task t = new ToDo(description);
+            tasks.add(t);
+            printAdded(t);
+            return;
+        }  else if (input.startsWith("deadline")) {
+            String arg = input.length() > 8? input.substring(8).trim(): "";
+            if (arg.isEmpty()) {
+                throw new DukeException("Missing task description!!");
+            }
+            int at = arg.indexOf("/by");
+            if (at < 0) {
+                throw new DukeException("Missing '/by'. Eg. deadline return book /by Sunday");
+            }
+
+            String description = arg.substring(0, at).trim();
+            String by = arg.substring(at + 3).trim();
+            if (description.isEmpty()) {
+                throw new DukeException("Missing task description!!");
+            }
+            if (by.isEmpty()) {
+                throw new DukeException("Please let me know when it's due after '/by'.");
+            }
+            Task t = new Deadline(description, by);
+            tasks.add(t);
+            printAdded(t);
+            return;
+        }  else if (input.startsWith("event")) {
+            String arg = input.length() > 4 ? input.substring(4).trim() : "";
+            if (arg.isEmpty()) {
+                throw new DukeException("Event format: event <desc> /from <start> /to <end>");
+            }
+
+            int f = arg.indexOf("/from:");
+            int t = arg.indexOf("/to");
+            if (f < 0 || t < 0 || t <= f) {
+                throw new DukeException("Need both '/from' and '/to'. Example: event meetup /from Mon 2pm /to 4pm");
+            }
+            String desc = arg.substring(0, f).trim();
+            String from = arg.substring(f + 5, t);
+            String to = arg.substring(t + 3).trim();
+            if (desc.isEmpty()) {
+                throw new DukeException("Event needs a description before '/from'.");
+            }
+
+            if (from.isEmpty()) {
+                throw new DukeException("Provide a start time after '/from'.");
+            }
+            if (to.isEmpty()) {
+                throw new DukeException("Provide an end time after '/to'.");
+            }
+
+            Task task = new Event(desc,from, to);
+            tasks.add(task);
+            printAdded(task);
+            return;
+
+        } else {
+            throw new DukeException("I'm sorry, but I don't know what that means :(");
+        }
+
+    }
+
 
 
     public static void main(String[] args) {
@@ -30,53 +110,18 @@ public class Clover {
         System.out.println(line);
 
         while (in.hasNextLine()) {
-            String input =  in.nextLine().trim();
-            Task task = new Task(input);
+            String input = in.nextLine().trim();
             if (input.equalsIgnoreCase("bye")) {
                 System.out.println("Bye, hope to see you again soon!!");
                 break;
-            } else if (input.equalsIgnoreCase("list")) {
-                printList();
-            } else if (input.startsWith("todo")) {
-                String description = input.substring(5).trim();
-                Task t = new ToDo(description);
-                tasks.add(t);
-                printAdded(t);
-                continue;
-            } else if (input.startsWith("deadline ")) {
-                String arg = input.substring(9).trim();
-                String[] parts = arg.split("/by", 2);
-                String description = parts[0].trim();
-                String by = parts.length > 1 ? parts[1].trim() : "";
-                Task t = new Deadline(description, by);
-                tasks.add(t);
-                printAdded(t);
-                continue;
-
-            } else if (input.startsWith("event ")) {
-                String arg = input.substring(6);
-                String[] p1 = arg.split("/from",2);
-                String desc = p1[0].trim();
-                String[] p2 = p1[1].split("/to", 2);
-                String from = p2[0].trim();
-                String to = p2[1].trim();
-                Task t = new Event(desc,from, to);
-                tasks.add(t);
-                printAdded(t);
-                continue;
-
-            } else if (input.toLowerCase().startsWith("mark ")) {
-                markOrUnmark(tasks, input, true);
-            } else if (input.toLowerCase().startsWith("unmark")) {
-                markOrUnmark(tasks, input, false);
-            } else if (!input.isEmpty()) {
-                    tasks.add(task);
-                    System.out.println("added: " + input);
-                } else {
-                    System.out.println("full!!");
-                }
+            }
+            try {
+                handle(input);
+            } catch (DukeException e) {
+                printError(e.getMessage());
             }
         }
+    }
 
     private static void markOrUnmark(List<Task> tasks, String input, boolean mark) {
         String[] parts = input.split("\\s+", 2);
