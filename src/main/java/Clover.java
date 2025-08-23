@@ -92,6 +92,15 @@ public class Clover {
             printAdded(task);
             return;
 
+        } else if (input.startsWith("delete")) {
+            String[] parts = input.split("\\s+", 2);
+            int index = Integer.parseInt(parts[1]) - 1;
+            Task t = tasks.get(index);
+            tasks.remove(index);
+            System.out.println("Okay, I've removed this task:");
+            System.out.println("   " + t);
+            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+
         } else {
             throw new DukeException("I'm sorry, but I don't know what that means :(");
         }
