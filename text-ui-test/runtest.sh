@@ -1,38 +1,44 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-# create bin directory if it doesn't exist
-if [ ! -d "../bin" ]
-then
-    mkdir ../bin
+# === set this to your main class ===
+MAIN_CLASS="Clover"        # e.g. "ip.Clover" if you use: package ip;
+
+# (optional) use a specific JDK: JAVAC="/c/Program Files/Java/jdk-17/bin/javac"; JAVA="/c/Program Files/Java/jdk-17/bin/java"
+JAVAC="${JAVAC:-javac}"
+JAVA="${JAVA:-java}"
+
+# create bin
+mkdir -p ../bin
+
+# clean previous output
+rm -f ACTUAL.TXT EXPECTED-UNIX.TXT sources.txt
+
+# collect ALL sources (handles packages/subfolders)
+find ../src/main/java -name "*.java" > sources.txt
+
+# compile (to ../bin)
+if ! "$JAVAC" -Xlint:none -d ../bin -cp ../src/main/java @sources.txt; then
+  echo "********** BUILD FAILURE **********"
+  exit 1
 fi
 
-# delete output from previous run
-if [ -e "./ACTUAL.TXT" ]
-then
-    rm ACTUAL.TXT
-fi
+# run program -> ACTUAL.TXT
+"$JAVA" -classpath ../bin "$MAIN_CLASS" < input.txt > ACTUAL.TXT
 
-# compile the code into the bin folder, terminates if error occurred
-if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/*.java
-then
-    echo "********** BUILD FAILURE **********"
-    exit 1
-fi
-
-# run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
-
-# convert to UNIX format
+# normalize line endings (best-effort if dos2unix isn't installed)
 cp EXPECTED.TXT EXPECTED-UNIX.TXT
-dos2unix ACTUAL.TXT EXPECTED-UNIX.TXT
-
-# compare the output to the expected output
-diff ACTUAL.TXT EXPECTED-UNIX.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test result: PASSED"
-    exit 0
+if command -v dos2unix >/dev/null 2>&1; then
+  dos2unix ACTUAL.TXT EXPECTED-UNIX.TXT >/dev/null 2>&1 || true
 else
-    echo "Test result: FAILED"
-    exit 1
+  perl -pi -e 's/\r\n/\n/g' ACTUAL.TXT EXPECTED-UNIX.TXT 2>/dev/null || true
+fi
+
+# compare
+if diff -u EXPECTED-UNIX.TXT ACTUAL.TXT; then
+  echo "Test result: PASSED"
+  exit 0
+else
+  echo "Test result: FAILED"
+  exit 1
 fi
