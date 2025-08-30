@@ -1,10 +1,17 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public abstract class Task {
     String description;
-    boolean isDone;
+    private boolean isDone;
 
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+    }
+
+    public boolean isDone() {
+        return isDone;
     }
 
     public String getStatusIcon() {
@@ -37,13 +44,17 @@ public abstract class Task {
                 break;
             case "D":
                 if (parts.length != 4) throw new IllegalArgumentException("Invalid D: " + line);
-                t = new Deadline(desc, parts[3]);
+                LocalDateTime by = LocalDateTime.parse(parts[3]);
+                t = new Deadline(desc, by);
                 break;
             case "E":
                 if (parts.length == 5) {
-                    t = new Event(desc, parts[3], parts[4]); // your 3-param Event
+                    LocalDateTime from = LocalDateTime.parse(parts[3]);
+                    LocalDateTime to = LocalDateTime.parse(parts[4]);
+                    t = new Event(desc, from, to); // your 3-param Event
                 } else if (parts.length == 4) {
-                    t = new Event(desc, parts[3], parts[3]);
+                    LocalDateTime from = LocalDateTime.parse(parts[3]);
+                    t = new Event(desc, from, from);
                 } else {
                     throw new IllegalArgumentException("Invalid Event format: " + line);
                 }
