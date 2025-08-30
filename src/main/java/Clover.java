@@ -4,8 +4,9 @@ import java.util.List;
 
 public class Clover {
     private static final List<Task> tasks = new ArrayList<>();
+    private static final Storage STORAGE = new Storage("data", "duke.txt");
 
-    private static final void printAdded(Task t) {
+    private static void printAdded(Task t) {
         System.out.println("     Got it. I've added this task:");
         System.out.println("       " + t);
         System.out.println("     Now you have " + tasks.size() + " tasks in the list.");
@@ -38,6 +39,7 @@ public class Clover {
             }
             Task t = new ToDo(description);
             tasks.add(t);
+            STORAGE.save(tasks);
             printAdded(t);
             return;
         }  else if (input.startsWith("deadline")) {
@@ -60,6 +62,7 @@ public class Clover {
             }
             Task t = new Deadline(description, by);
             tasks.add(t);
+            STORAGE.save(tasks);
             printAdded(t);
             return;
         }  else if (input.startsWith("event")) {
@@ -68,7 +71,7 @@ public class Clover {
                 throw new DukeException("Event format: event <desc> /from <start> /to <end>");
             }
 
-            int f = arg.indexOf("/from:");
+            int f = arg.indexOf("/from");
             int t = arg.indexOf("/to");
             if (f < 0 || t < 0 || t <= f) {
                 throw new DukeException("Need both '/from' and '/to'. Example: event meetup /from Mon 2pm /to 4pm");
@@ -89,6 +92,7 @@ public class Clover {
 
             Task task = new Event(desc,from, to);
             tasks.add(task);
+            STORAGE.save(tasks);
             printAdded(task);
             return;
 
@@ -145,6 +149,7 @@ public class Clover {
             System.out.println(" OK, I've marked this task as not done yet:");
             System.out.println("   " + task);
         }
+        STORAGE.save(tasks);
     }
 }
 
