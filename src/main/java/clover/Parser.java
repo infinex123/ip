@@ -20,6 +20,7 @@ public class Parser {
             case "todo": return new AddToDoCommand(arg);
             case "deadline": return new AddDeadlineCommand(arg);
             case "event": return new AddEventCommand(arg);
+            case "find" : return new FindCommand(arg);
             default: throw new DukeException("I'm sorry, but I don't know what that means :(");
         }
     }
