@@ -1,3 +1,5 @@
+package clover;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -15,7 +17,7 @@ public class Deadline extends Task {
     }
 
     public String toStorageString() {
-        return "D | " + ( /* isDone? no getter now; extend Task if needed */ false ? "1" : "0")
+        return "D | " + ( /* isDone? no getter now; extend clover.Task if needed */ false ? "1" : "0")
                 + " | " + this.toString()
                 + " | " + by.format(STORE);
     }

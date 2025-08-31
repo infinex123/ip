@@ -1,3 +1,5 @@
+package clover;
+
 class MarkCommand extends Command {
     private final String arg;
     private final boolean mark;

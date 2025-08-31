@@ -1,3 +1,5 @@
+package clover;
+
 public class Parser {
     public static Command parse(String input) throws DukeException {
         String in = input == null ? "" : input.trim();
