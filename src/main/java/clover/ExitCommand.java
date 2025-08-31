@@ -1,3 +1,5 @@
+import clover.Command;
+
 class ExitCommand extends Command {
     @Override boolean isExit() {
         return true;
