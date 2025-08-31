@@ -1,4 +1,4 @@
-import clover.Command;
+package clover;
 
 class MarkCommand extends Command {
     private final String arg;

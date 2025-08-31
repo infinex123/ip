@@ -1,3 +1,5 @@
+package clover;
+
 class AddToDoCommand extends Command {
     private final String description;
     public AddToDoCommand(String description) {

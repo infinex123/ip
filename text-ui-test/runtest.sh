@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # === set this to your main class ===
-MAIN_CLASS="Clover"        # e.g. "ip.Clover" if you use: package ip;
+MAIN_CLASS="Clover"        # e.g. "ip.clover.Clover" if you use: package ip;
 
 # (optional) use a specific JDK: JAVAC="/c/Program Files/Java/jdk-17/bin/javac"; JAVA="/c/Program Files/Java/jdk-17/bin/java"
 JAVAC="${JAVAC:-javac}"

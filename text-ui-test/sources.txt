@@ -1,5 +1,5 @@
-../src/main/java/Clover.java
-../src/main/java/Deadline.java
-../src/main/java/Event.java
-../src/main/java/Task.java
-../src/main/java/ToDo.java
+../src/main/java/clover.Clover.java
+../src/main/java/clover.Deadline.java
+../src/main/java/clover.Event.java
+../src/main/java/clover.Task.java
+../src/main/java/clover.ToDo.java

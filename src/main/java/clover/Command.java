@@ -1,3 +1,5 @@
+package clover;
+
 abstract class Command {
     boolean isExit() {
         return false;
