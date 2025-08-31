@@ -5,6 +5,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * The main entry point of the Clover application.
+ * Sets up storage, user interface, and task list, then runs the main loop.
+ */
+
 public class Clover {
     private final Ui ui = new Ui();
     private TaskList tasks;
@@ -22,13 +27,30 @@ public class Clover {
             DateTimeFormatter.ofPattern("d/M/uuuu")          // 2/12/2019
     };
 
+    /**
+     * Attempts to parse a date/time string in multiple supported formats.
+     *
+     * @param raw the raw user input string
+     * @return the parsed LocalDateTime
+     * @throws DukeException if the input cannot be parsed
+     *
+     */
+
     public static LocalDateTime parseFlexibleDateTime(String raw) throws DukeException {
         String s = raw.trim();
         for (DateTimeFormatter f : LDT) {
-            try { return LocalDateTime.parse(s, f); } catch (DateTimeParseException ignored) {}
+            try {
+                return LocalDateTime.parse(s, f);
+            } catch (DateTimeParseException ignored) {
+
+            }
         }
         for (DateTimeFormatter f : LD) {
-            try { return LocalDate.parse(s, f).atStartOfDay(); } catch (DateTimeParseException ignored) {}
+            try {
+                return LocalDate.parse(s, f).atStartOfDay();
+            } catch (DateTimeParseException ignored) {
+
+            }
         }
         throw new DukeException(
                 "I couldn't understand the date/time.\nTry: 2019-12-02T18:00 | 2019-12-02 1800 | 2/12/2019 1800 | 2019-12-02 | 2/12/2019"
@@ -43,6 +65,10 @@ public class Clover {
             this.tasks = new TaskList();
         }
     }
+
+    /**
+     * Runs the main loop of the application until an exit command is issued.
+     */
 
     public void run() {
         ui.showWelcome();

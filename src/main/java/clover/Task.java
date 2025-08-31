@@ -2,6 +2,11 @@ package clover;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a task with a description and completion status.
+ */
+
+
 public abstract class Task {
     String description;
     private boolean isDone;
@@ -19,10 +24,18 @@ public abstract class Task {
         return isDone ? "X" : " ";
     }
 
+
+    /**
+     * Marks this task as completed.
+     */
     public void markDone() {
         this.isDone = true;
     }
 
+
+    /**
+     * Marks this task as not completed.
+     */
     public void markUndone() {
         this.isDone = false;
     }

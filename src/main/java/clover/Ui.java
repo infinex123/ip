@@ -1,7 +1,9 @@
 package clover;
 
 import java.util.Scanner;
-
+/**
+ * Handles user interaction: input reading and output printing.
+ */
 public class Ui {
     private Scanner sc = new Scanner(System.in);
 
@@ -17,6 +19,11 @@ public class Ui {
         System.out.println("______________________________________________________");
     }
 
+    /**
+     * Reads a full command from standard input.
+     *
+     * @return the user input line
+     */
     public String readCommand() {
         return sc.nextLine();
     }
@@ -25,6 +32,11 @@ public class Ui {
         System.out.println(s);
     }
 
+    /**
+     * Prints an error message to the console.
+     *
+     * @param msg the error message
+     */
     public void showError(String msg) {
         System.out.println(msg);
     }

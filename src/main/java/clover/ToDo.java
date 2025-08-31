@@ -1,4 +1,7 @@
 package clover;
+/**
+ * Represents a simple task without deadlines or event times.
+ */
 
 public class ToDo extends Task {
 
