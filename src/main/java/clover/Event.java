@@ -2,7 +2,9 @@ package clover;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+/**
+ * Represents a task scheduled over a period of time with a start and end.
+ */
 
 public class Event extends Task {
     private final LocalDateTime from;
