@@ -18,10 +18,10 @@ public class TaskList {
     }
 
     public Task get(int index) {
-        return tasks.get(index - 1);
+        return tasks.get(index);
     }
     public Task remove(int index) {
-        return tasks.remove(index - 1);
+        return tasks.remove(index);
     }
     public void add(Task t) {
         tasks.add(t);

@@ -12,7 +12,7 @@ class DeleteCommand extends Command {
             Task t = tasks.remove(index);
             ui.show("Okay, I've removed this task:");
             ui.show("   " + t);
-            ui.show("Now you have " + tasks.size() + " tasks in the list.");
+            ui.show("Now you have " + (tasks.size() - 1) + " tasks in the list.");
             storage.save(tasks.asList());
         } catch (Exception e) {
             throw new DukeException("Invalid index for delete.");

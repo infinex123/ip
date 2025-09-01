@@ -20,8 +20,9 @@ class AddDeadlineCommand extends Command {
         Task t = new Deadline(description, by);
         tasks.add(t);
         storage.save(tasks.asList());
+        int TasksSize = tasks.size() - 1;
         ui.show("     Got it. I've added this task:");
         ui.show("       " + t);
-        ui.show("     Now you have " + tasks.size() + " tasks in the list.");
+        ui.show("     Now you have " + TasksSize + " tasks in the list.");
     }
 }

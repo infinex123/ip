@@ -14,6 +14,7 @@ class AddToDoCommand extends Command {
         storage.save(tasks.asList());
         ui.show("     Got it. I've added this task:");
         ui.show("       " + t);
-        ui.show("     Now you have " + tasks.size() + " tasks in the list.");
+        int TasksSize = tasks.size() - 1;
+        ui.show("     Now you have " + TasksSize + " tasks in the list.");
     }
 }

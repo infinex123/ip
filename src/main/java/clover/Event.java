@@ -21,7 +21,7 @@ public class Event extends Task {
 
     public String toStorageString() {
         return "E | " + (isDone()? "1" : "0")
-                + " | " + this.toString()
+                + " | " + this.getDescription()
                 + " | " + from.format(STORE) + " | " + to.format(STORE);
     }
 

@@ -1,5 +1,4 @@
-D | 0 | [D][ ] [D][ ] [D][ ] return book (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) | 2019-12-02T18:00:00
-E | 0 | [E][ ] [E][ ] [E][ ] meeting (from: Dec 02 2025, 9:00 pm to: Dec 02 2025, 10:00 pm) (from: Dec 02 2025, 9:00 pm to: Dec 02 2025, 10:00 pm) (from: Dec 02 2025, 9:00 pm to: Dec 02 2025, 10:00 pm) | 2025-12-02T21:00:00 | 2025-12-02T22:00:00
-T | 0 | return book
-T | 0 | read
+D | 0 | [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] return book (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) | 2019-12-02T18:00:00
 T | 0 | asada
+E | 1 | meeting | 2003-01-22T12:00:00 | 2003-01-22T15:00:00
+T | 0 | read
