@@ -53,6 +53,7 @@ public class Clover {
      */
 
     public static LocalDateTime parseFlexibleDateTime(String raw) throws DukeException {
+        assert raw != null : "parseFlexibleDateTime: raw input cannot be null";
         String s = raw.trim();
         for (DateTimeFormatter f : LDT) {
             try {
@@ -76,9 +77,11 @@ public class Clover {
     public Clover() {
         try {
             this.tasks = new TaskList(storage.load());
+            assert this.tasks != null : "Clover: TaskList must not be null after load()";
         } catch (Exception e) {
             ui.show("Error loading data file, starting with an empty list!");
             this.tasks = new TaskList();
+            assert this.tasks != null : "Clover: TaskList must not be null after fallback init";
         }
     }
 
@@ -87,9 +90,12 @@ public class Clover {
     }
 
     public String getResponse(String input) {
+        assert input != null : "getResponse: input must not be null";
         BufferingUi bui = new BufferingUi();
         try {
             Command c = Parser.parse(input);
+            assert c != null : "Parser should never return null";
+            assert tasks != null : "TaskList must be initialized before executing";
             c.execute(tasks, bui, storage);  // Re-use your existing command flow
             if (c.isExit()) {
                 // Optional: persist/cleanup already done by execute if needed

@@ -12,6 +12,8 @@ public abstract class Task {
     private boolean isDone;
 
     public Task(String description) {
+        assert description != null : "Task description must not be null";
+        assert !description.trim().isEmpty() : "Task description must not be empty";
         this.description = description;
         this.isDone = false;
     }
@@ -34,6 +36,7 @@ public abstract class Task {
      */
     public void markDone() {
         this.isDone = true;
+        assert this.isDone : "Task should be marked done";
     }
 
 
@@ -42,6 +45,7 @@ public abstract class Task {
      */
     public void markUndone() {
         this.isDone = false;
+        assert !this.isDone : "Task should be marked not done";
     }
 
     public static Task fromStorageString(String line) {

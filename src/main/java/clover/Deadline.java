@@ -17,7 +17,10 @@ public class Deadline extends Task {
 
     public Deadline(String description, LocalDateTime by) {
         super(description);
+        assert description != null && !description.trim().isEmpty() : "Deadline description must be non-empty";
+        assert by != null : "Deadline 'by' must not be null";
         this.by = by;
+        assert this.by != null : "Deadline 'by' must be set";
     }
 
     public String toStorageString() {
