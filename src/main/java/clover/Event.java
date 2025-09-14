@@ -15,7 +15,6 @@ public class Event extends Task {
             DateTimeFormatter.ISO_LOCAL_DATE_TIME;
     public Event(String description, LocalDateTime from, LocalDateTime to) {
         super(description);
-        assert description != null && !description.trim().isEmpty() : "Event description must be non-empty";
         this.from = from;
         this.to = to;
     }

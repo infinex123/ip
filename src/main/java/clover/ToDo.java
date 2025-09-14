@@ -10,6 +10,7 @@ public class ToDo extends Task {
         super(description);
         assert description != null : "ToDo description must not be null";
         assert !description.trim().isEmpty() : "ToDo description must not be empty";
+
     }
 
     @Override
