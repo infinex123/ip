@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="clover.MainWindow" prefWidth="440" prefHeight="620">
+    <children>
+        <VBox spacing="10.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+            <padding><Insets top="0" right="0" bottom="0" left="0"/></padding>
+
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" prefHeight="560">
+                <content>
+                    <VBox fx:id="dialogContainer" spacing="8.0">
+                        <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    </VBox>
+                </content>
+            </ScrollPane>
+
+            <HBox spacing="8.0" alignment="CENTER_LEFT">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <TextField fx:id="userInput" HBox.hgrow="ALWAYS" promptText="Say something…"/>
+                <Button fx:id="sendButton" text="Send" onAction="#handleUserInput"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
+

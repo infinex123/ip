@@ -27,6 +27,22 @@ public class Clover {
             DateTimeFormatter.ofPattern("d/M/uuuu")          // 2/12/2019
     };
 
+    private static class BufferingUi extends Ui {
+        private final StringBuilder sb = new StringBuilder();
+
+        @Override public void show(String msg) {
+            sb.append(msg).append("\n");
+        }
+        @Override public void showError(String msg) {
+            sb.append(msg).append("\n");
+        }
+        @Override public void showLine() {}
+
+        String flush() {
+            return sb.toString().stripTrailing();
+        }
+    }
+
     /**
      * Attempts to parse a date/time string in multiple supported formats.
      *
@@ -66,9 +82,26 @@ public class Clover {
         }
     }
 
-    /**
-     * Runs the main loop of the application until an exit command is issued.
-     */
+    public String getGreeting() {
+        return "HELLO! I’m Clover.\nWhat can I do for you today?";
+    }
+
+    public String getResponse(String input) {
+        BufferingUi bui = new BufferingUi();
+        try {
+            Command c = Parser.parse(input);
+            c.execute(tasks, bui, storage);  // Re-use your existing command flow
+            if (c.isExit()) {
+                // Optional: persist/cleanup already done by execute if needed
+            }
+        } catch (DukeException e) {
+            bui.showError(e.getMessage());
+        } catch (Exception e) {
+            bui.showError("Unexpected error: " + e.getMessage());
+        }
+        return bui.flush();
+    }
+
 
     public void run() {
         ui.showWelcome();
@@ -91,6 +124,7 @@ public class Clover {
 
 
     public static void main(String[] args) {
+
         new Clover().run();
     }
 
