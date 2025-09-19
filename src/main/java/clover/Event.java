@@ -19,6 +19,10 @@ public class Event extends Task {
         this.to = to;
     }
 
+    public LocalDateTime getFrom() {
+        return this.from;
+    }
+
     public String toStorageString() {
         return "E | " + (isDone()? "1" : "0")
                 + " | " + this.getDescription()

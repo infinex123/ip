@@ -23,6 +23,10 @@ public class Deadline extends Task {
         assert this.by != null : "Deadline 'by' must be set";
     }
 
+    public LocalDateTime getBy() {
+        return this.by;
+    }
+
     public String toStorageString() {
         return "D | " + ( /* isDone? no getter now; extend clover.Task if needed */ false ? "1" : "0")
                 + " | " + this.toString()

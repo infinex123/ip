@@ -4,7 +4,8 @@ class MarkCommand extends Command {
     private final String arg;
     private final boolean mark;
     public MarkCommand(String arg, boolean mark) {
-        this.arg = arg; this.mark = mark;
+        this.arg = arg;
+        this.mark = mark;
     }
 
     @Override void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {

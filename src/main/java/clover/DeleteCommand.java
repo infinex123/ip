@@ -3,6 +3,7 @@ package clover;
 class DeleteCommand extends Command {
     private final String arg;
     public DeleteCommand(String arg) {
+
         this.arg = arg;
     }
 

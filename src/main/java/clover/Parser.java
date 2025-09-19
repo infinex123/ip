@@ -21,6 +21,7 @@ public class Parser {
             case "deadline": return new AddDeadlineCommand(arg);
             case "event": return new AddEventCommand(arg);
             case "find" : return new FindCommand(arg);
+            case "remind": return new ReminderCommand(arg);
             default: throw new DukeException("I'm sorry, but I don't know what that means :(");
         }
     }
