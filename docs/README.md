@@ -1,4 +1,4 @@
-<img width="500" height="201" alt="image" src="https://github.com/user-attachments/assets/238d958c-cc16-4046-ba86-9b4f2c75458a" /># Clover User Guide
+# Clover User Guide
 
 ![Clover UI](Ui.png)
 
