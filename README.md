@@ -1,6 +1,6 @@
 # Clover User Guide
 
-![Clover UI](Ui.png)
+![Clover UI]
 
 Clover is a friendly JavaFX chatbot that helps you manage your tasks. You can add Todos, Deadlines, and Events, mark them as done, search, delete, and even get reminders for upcoming tasks. All tasks are saved automatically so you can pick up where you left off.
 
