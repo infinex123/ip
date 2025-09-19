@@ -20,8 +20,9 @@ Clover is a friendly JavaFX chatbot that helps you manage your tasks. You can ad
 Adds a simple task without a date/time.  
 Example: 'todo Buy milk'
 Expected outcome:
-```Got it. I've added this task:```
-```[T][ ] Buy milk ```
+
+```Got it. I've added this task: ```
+[T][ ] Buy milk
 
 
 
