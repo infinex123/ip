@@ -1,1 +1,5 @@
-D | 0 | [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] return book (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) | 2019-12-02T18:00:00
+D | 0 | [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] [D][ ] return book (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) (by: Dec 02 2019, 6:00 pm) | 2019-12-02T18:00:00
+T | 1 | read
+D | 0 | [D][ ] return book (by: Sep 20 2025, 12:00 am) | 2025-09-20T00:00:00
+E | 0 | meeting | 2025-09-20T18:00:00 | 2025-09-20T20:00:00
+T | 0 | homeworl

@@ -1,12 +1,17 @@
 package clover;
 
 import java.util.Scanner;
+
 /**
- * Handles user interaction: input reading and output printing.
+ * Handles user interaction for the Clover application,
+ * including input reading and output printing.
  */
 public class Ui {
     private Scanner sc = new Scanner(System.in);
 
+    /**
+     * Displays the welcome message when the application starts.
+     */
     public void showWelcome() {
         String line = "______________________________________________________";
         System.out.println(line);
@@ -15,6 +20,9 @@ public class Ui {
         System.out.println(line);
     }
 
+    /**
+     * Displays a horizontal line divider.
+     */
     public void showLine() {
         System.out.println("______________________________________________________");
     }
@@ -28,6 +36,11 @@ public class Ui {
         return sc.nextLine();
     }
 
+    /**
+     * Displays a message to the console.
+     *
+     * @param s the message to display
+     */
     public void show(String s) {
         System.out.println(s);
     }
@@ -41,9 +54,11 @@ public class Ui {
         System.out.println(msg);
     }
 
+    /**
+     * Displays the farewell message when the application exits.
+     */
     public void showBye() {
         System.out.println("Bye, hope to see you again soon!!");
     }
-
-
 }
+

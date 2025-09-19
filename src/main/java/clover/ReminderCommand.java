@@ -1,10 +1,23 @@
 package clover;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Represents a command to remind the user of upcoming tasks
+ * that are due within a specified number of days.
+ */
 public class ReminderCommand extends Command {
     private int days;
 
+    /**
+     * Constructs a {@code ReminderCommand} with the given argument.
+     * <p>
+     * If the argument is {@code null}, the default is 1 day.
+     *
+     * @param arg the number of days ahead to check for tasks (as a string)
+     * @throws DukeException if the argument cannot be parsed as an integer
+     */
     public ReminderCommand(String arg) throws DukeException {
         if (arg == null) {
             this.days = 1;
@@ -13,10 +26,19 @@ public class ReminderCommand extends Command {
                 this.days = Integer.parseInt(arg.trim());
             } catch (Exception e) {
                 throw new DukeException("Usage: remind [days] (e.g., remind 3)");
-                }
             }
         }
+    }
 
+    /**
+     * Executes the ReminderCommand by showing tasks that are due within
+     * the next {@code days} days from the current time.
+     *
+     * @param tasks   the TaskList containing the tasks
+     * @param ui      the Ui object used to display reminders
+     * @param storage the Storage (unused in this command)
+     * @throws DukeException if an error occurs during execution
+     */
     @Override
     void execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         LocalDateTime now = LocalDateTime.now();
@@ -39,7 +61,10 @@ public class ReminderCommand extends Command {
     }
 
     /**
-     * Extracts a datetime from Deadline or Event tasks.
+     * Extracts the due date/time from a task if it is a Deadline or Event.
+     *
+     * @param t the task to extract from
+     * @return the due {@link LocalDateTime} of the task, or {@code null} if not applicable
      */
     private static LocalDateTime extractDueTime(Task t) {
         try {
@@ -52,5 +77,4 @@ public class ReminderCommand extends Command {
         } catch (Exception ignore) {}
         return null;
     }
-
-    }
+}
