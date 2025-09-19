@@ -1,4 +1,4 @@
-# Clover User Guide
+<img width="500" height="201" alt="image" src="https://github.com/user-attachments/assets/238d958c-cc16-4046-ba86-9b4f2c75458a" /># Clover User Guide
 
 ![Clover UI](Ui.png)
 
@@ -20,8 +20,8 @@ Clover is a friendly JavaFX chatbot that helps you manage your tasks. You can ad
 Adds a simple task without a date/time.  
 Example: 'todo Buy milk'
 Expected outcome:
-Got it. I've added this task:
-[T][ ] Buy milk
+```Got it. I've added this task:```
+```[T][ ] Buy milk ```
 
 
 
