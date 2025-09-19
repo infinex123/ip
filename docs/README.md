@@ -33,7 +33,9 @@ Now you have 1 task in the list.
 ### Add a Deadline
 Adds a task with a specific due date/time.  
 Example:
+```
 deadline return book /by 2025-09-20 1800
+```
 
 Expected outcome:
  ```
@@ -44,7 +46,9 @@ Got it. I've added this task:
 ### Add an Event
 Adds a task that spans a period of time.  
 Example:
+```
 event project meeting /from 2025-09-20 1400 /to 2025-09-20 1600
+```
 
 Expected outcome:
  ```
@@ -55,7 +59,9 @@ Got it. I've added this task:
 ### List Tasks
 Shows all current tasks.  
 Example:
+```
 list
+```
 
 Expected outcome:
  ```
@@ -68,8 +74,10 @@ Here are the tasks in your list:
 ### Mark / Unmark Tasks
 Marks a task as done or undone.  
 Examples:
+```
 mark 2
 unmark 2
+```
 
 Expected outcome:
  ```
@@ -80,7 +88,9 @@ Nice! I've marked this task as done:
 ### Delete Tasks
 Removes a task from the list.  
 Example:
+```
 delete 1
+```
 
 Expected outcome:
  ```
@@ -92,7 +102,9 @@ Okay, I've removed this task:
 ### Find Tasks
 Searches for tasks containing a keyword.  
 Example:
+```
 find book
+```
 
 
 Expected outcome:
@@ -105,7 +117,9 @@ Here are the matching tasks in your list:
 ### Reminders
 Shows tasks due within the next N days (default = 1).  
 Example:
+```
 remind 3
+```
 
 
 Expected outcome:
@@ -118,7 +132,9 @@ You need to do these tasks within 3 day(s):
 ### Exit
 Closes the application.  
 Example:
+```
 bye
+```
 
 Expected outcome:
  ```
